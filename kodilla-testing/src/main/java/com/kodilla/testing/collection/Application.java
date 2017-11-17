@@ -2,6 +2,7 @@ package com.kodilla.testing.collection;
 import com.kodilla.testing.collection.OddNumbersExterminator;
 import java.util.ArrayList;
 
+
 class Application {
         public static void main(String[] args){
 

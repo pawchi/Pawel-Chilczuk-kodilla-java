@@ -19,6 +19,7 @@ public class CollectionTestSuite {
         //Then
         Assert.assertEquals(0,result.size());
     }
+
     @After
     public void afterEmptyList() {
         System.out.println("Test OddNumbersExterminatorEmptyList: END");
