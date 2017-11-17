@@ -16,6 +16,7 @@ public class StatisticsTestSuite {
     public void beforeEveryTest(){
         Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.postsCount()).thenReturn()
+                //hhfhfh
     }
 
     @Test
