@@ -4,9 +4,9 @@ class ComputeStatistics {
     int usersCount;
     int postsCount;
     int commentsCount;
-    int averagePostsPerUser;
-    int averageCommentsPerUser;
-    int averageCommentsPerPost;
+    double averagePostsPerUser;
+    double averageCommentsPerUser;
+    double averageCommentsPerPost;
 
 
 
@@ -18,14 +18,14 @@ class ComputeStatistics {
         if (postsCount==0){
             averagePostsPerUser=0;
         } else {
-            averagePostsPerUser = usersCount / postsCount;
+            averagePostsPerUser =  postsCount/usersCount;
         }
         if (commentsCount==0){
             averageCommentsPerUser=0;
             averageCommentsPerPost=0;
         }else {
-            averageCommentsPerUser = usersCount / commentsCount;
-            averageCommentsPerPost = postsCount / commentsCount;
+            averageCommentsPerUser =  commentsCount/usersCount;
+            averageCommentsPerPost =  commentsCount/postsCount;
         }
 
     }
@@ -40,7 +40,7 @@ class ComputeStatistics {
     public double getAverageCommentsPerUser(){
         return averageCommentsPerUser;
     }
-    public double getAverageCommentsPerPost(){
+    double getAverageCommentsPerPost(){
         return averageCommentsPerPost;
     }
 }
