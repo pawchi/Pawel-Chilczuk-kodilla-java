@@ -100,7 +100,7 @@ public class StatisticsTestSuite {
 
 
         //Then
-        Assert.assertEquals(0.1,run.getAverageCommentsPerPost(),0);
+        Assert.assertEquals(0.1,run.getAverageCommentsPerPost(),0.1);
 
     }
 
