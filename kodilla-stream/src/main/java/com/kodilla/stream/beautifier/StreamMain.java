@@ -9,7 +9,6 @@ public class StreamMain {
     public static void main(String[] args){
         PoemBeutifier poemBeutifier = new PoemBeutifier();
 
-
         poemBeutifier.beutify("Text to beautify",(a) ->"ABC"+a+"ABC" );
         poemBeutifier.beutify("Text to uppercase",(a) -> toUpperCase(a) );
         poemBeutifier.beutify("TexT to LOWERCASE",(a) -> toLowerCase(a) );
