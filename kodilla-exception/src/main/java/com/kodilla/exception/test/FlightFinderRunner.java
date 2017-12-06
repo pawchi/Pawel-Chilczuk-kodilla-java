@@ -6,6 +6,8 @@ public class FlightFinderRunner {
         Flight flight2 = new Flight("London","Paris");
         Flight flight3 = new Flight("XXX","Frankfurt");
 
+
+
         try {
             FlightFinder run = new FlightFinder();
             run.findFlight(flight3);
