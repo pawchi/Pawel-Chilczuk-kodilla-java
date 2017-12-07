@@ -1,5 +1,4 @@
 package com.kodilla.good.patterns.challenges;
-
 import java.util.Map;
 import java.util.stream.Collectors;
 
