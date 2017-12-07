@@ -16,15 +16,10 @@ public class FlightFinder {
             if (((flightsMap.get(flight.departureAirport)) == true) && ((flightsMap.get(flight.arrivalAirport)) == true)) {
 
                 System.out.println("Połączenie istnieje");
-            } /*else {
-                System.out.println("Połączenie NIE jest obsługiwane");
-            }*/
-        } else {
-            throw new RouteNotFoundException("Nie ma takiego lotniska");
-        }
-        /*} else {
-            System.out.println("Lotnisko nie znalezione");
-        }*/
 
+            } else {
+                throw new RouteNotFoundException("My exception");
+            }
+        }
     }
 }
