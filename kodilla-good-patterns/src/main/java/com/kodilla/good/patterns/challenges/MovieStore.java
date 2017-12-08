@@ -1,4 +1,5 @@
 package com.kodilla.good.patterns.challenges;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,4 +27,5 @@ public final class MovieStore {
 
         return new HashMap<String, List<String>>(booksTitlesWithTranslations);
     }
+
 }
