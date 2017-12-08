@@ -7,7 +7,7 @@ public class StreamMain {
     public static void main(String[] args){
         MovieStore allTitles = new MovieStore();
         String theResultStringAllTitles = allTitles.getMovies().entrySet().stream()
-                .map(Map.Entry::toString)
+                .flatMap(n -> n.getValue().stream())
                 .collect(Collectors.joining("!"));
 
         System.out.println(theResultStringAllTitles);
