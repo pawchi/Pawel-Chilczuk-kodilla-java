@@ -13,9 +13,7 @@ public class FlightFinder {
 
         if (flight != null) {
             if (((flightsMap.get(flight.departureAirport)) == true) && ((flightsMap.get(flight.arrivalAirport)) == true)) {
-
                 System.out.println("Połączenie istnieje");
-
             } else {
                 throw new RouteNotFoundException("My exception");
             }

@@ -12,7 +12,6 @@ public class Flight {
     public String getDepartureAirport() {
         return departureAirport;
     }
-
     public String getArrivalAirport() {
         return arrivalAirport;
     }
