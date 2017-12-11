@@ -1,5 +1,5 @@
 package com.kodilla.good.patterns.challenges;
 
 public interface OrderRepository {
-    boolean sendOrder(User user,Product product);
+    void sendOrder(User user,Product product);
 }

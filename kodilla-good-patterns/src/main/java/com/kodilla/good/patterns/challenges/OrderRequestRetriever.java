@@ -7,7 +7,6 @@ public class OrderRequestRetriever {
         OrderDate orderDate = new OrderDate (20171210);
         Product product = new Product("Rubic Cube",3);
 
-
         return new OrderRequest(user, orderDate, product);
     }
 }

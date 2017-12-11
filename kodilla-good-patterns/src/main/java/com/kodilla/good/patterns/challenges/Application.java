@@ -4,8 +4,11 @@ public class Application {
     public static void main(String[] args) {
 
         OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
-        //OrderRequest orderRequest = new OrderRequest();
+        OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
-        orderRequestRetriever.retrieve();
+        OrderProcessor orderProcessor = new OrderProcessor(
+                new OrderInfoService(), new OrderRepositorySender(), new ProductOrderService());
+        orderProcessor.process(orderRequest);
+
     }
 }
