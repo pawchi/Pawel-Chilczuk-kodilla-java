@@ -1,6 +1,5 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.clean;
 
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StreamMain {
