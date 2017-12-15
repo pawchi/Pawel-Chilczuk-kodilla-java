@@ -6,10 +6,6 @@ public class SupplierRequestRetriever {
         Product product = new Product("Chickenburger",id1);
         ProductParameters productParameters = new ProductParameters(2,"XL","Without onion");
         Producer dreamBurger = new DreamBurger();
-        /*ProductID id2 = new ProductID(2);
-        Product product = new Product("Mutton Kebab",id2);
-        ProductParameters productParameters = new ProductParameters(1,"small","not spicy");
-        Producer kebabMaster = new KebabMaster();*/
 
         return new SupplierRequest(productParameters,product,dreamBurger);
     }
