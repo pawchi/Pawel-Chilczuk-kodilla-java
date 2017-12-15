@@ -22,6 +22,7 @@ public class SupplierRequest {
     public Producer getProducer() {
         return producer;
     }
+
 }
 
 

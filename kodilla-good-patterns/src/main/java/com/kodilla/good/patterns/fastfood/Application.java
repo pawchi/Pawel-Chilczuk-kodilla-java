@@ -7,7 +7,7 @@ public class Application {
 
         SupplierRequestProcessor supplierRequestProcessor = new SupplierRequestProcessor();
 
-        RequestProcessor requestProcessor = new RequestProcessor();
+        RequestProcessor requestProcessor = new RequestProcessor(new KebabMaster());
         requestProcessor.checkRequestConfirmation(supplierRequestProcessor.createRequestQue(supplierRequest));
     }
 }
