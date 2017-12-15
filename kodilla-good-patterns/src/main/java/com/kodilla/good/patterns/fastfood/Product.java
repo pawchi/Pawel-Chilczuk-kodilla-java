@@ -2,24 +2,26 @@ package com.kodilla.good.patterns.fastfood;
 
 public class Product {
     public String productName;
-    public Integer productID;
-    public Integer productQuantity;
+    public ProductID productID;
 
-    public Product(String productName, Integer productID, Integer productQuantity) {
+    public Product(String productName, ProductID productID) {
         this.productName = productName;
         this.productID = productID;
-        this.productQuantity = productQuantity;
     }
 
     public String getProductName() {
         return productName;
     }
 
-    public Integer getProductID() {
+    public ProductID getProductID() {
         return productID;
     }
 
-    public Integer getProductQuantity() {
-        return productQuantity;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productName='" + productName + '\'' +
+                ", productID=" + productID +
+                '}';
     }
 }
