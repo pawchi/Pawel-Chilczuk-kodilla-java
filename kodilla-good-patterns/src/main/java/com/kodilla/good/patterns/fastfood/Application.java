@@ -5,9 +5,7 @@ public class Application {
         SupplierRequestRetriever supplierRequestRetriever = new SupplierRequestRetriever();
         SupplierRequest supplierRequest = supplierRequestRetriever.retrieve();
 
-        SupplierRequestProcessor supplierRequestProcessor = new SupplierRequestProcessor();
-
-        RequestProcessor requestProcessor = new RequestProcessor();
-        requestProcessor.checkRequestConfirmation(supplierRequestProcessor.createRequestQue(supplierRequest));
+        RequestProcessor requestProcessor = new RequestProcessor(supplierRequestRetriever.retrieve().producer);
+        requestProcessor.checkRequestCornfirmation(supplierRequest);
     }
 }
