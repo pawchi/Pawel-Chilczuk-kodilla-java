@@ -1,9 +1,9 @@
 package com.kodilla.good.patterns.fastfood;
 
 public class SupplierRequest {
-    public ProductParameters productParameters;
-    public Product product;
-    public Producer producer;
+    private ProductParameters productParameters;
+    private Product product;
+    private Producer producer;
 
     public SupplierRequest(ProductParameters productParameters, Product product, Producer producer) {
         this.productParameters = productParameters;

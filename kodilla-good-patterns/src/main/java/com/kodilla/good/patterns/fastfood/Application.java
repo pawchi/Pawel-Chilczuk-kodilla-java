@@ -1,11 +1,9 @@
 package com.kodilla.good.patterns.fastfood;
 
 public class Application {
-    public static void main(String[] args){
-        SupplierRequestRetriever supplierRequestRetriever = new SupplierRequestRetriever();
-        SupplierRequest supplierRequest = supplierRequestRetriever.retrieve();
+    public static void main(String[] args) {
 
-        RequestProcessor requestProcessor = new RequestProcessor(supplierRequestRetriever.retrieve().producer);
-        requestProcessor.checkRequestCornfirmation(supplierRequest);
+        RequestProcessor requestProcessor = new RequestProcessor(new SupplierRequestRetriever());
+        requestProcessor.checkRequestCornfirmation();
     }
 }

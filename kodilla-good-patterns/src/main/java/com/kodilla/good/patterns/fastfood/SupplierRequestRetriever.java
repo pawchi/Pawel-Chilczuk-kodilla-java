@@ -1,6 +1,7 @@
 package com.kodilla.good.patterns.fastfood;
 
-public class SupplierRequestRetriever {
+public class SupplierRequestRetriever implements RequestRetriever {
+    @Override
     public SupplierRequest retrieve(){
         ProductID id1 = new ProductID(1);
         Product product = new Product("Chickenburger",id1);
