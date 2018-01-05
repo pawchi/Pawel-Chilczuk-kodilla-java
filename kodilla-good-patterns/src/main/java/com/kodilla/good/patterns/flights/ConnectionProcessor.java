@@ -7,66 +7,65 @@ public class ConnectionProcessor {
 
     ConnectionDB connectionDB;
 
-    public ConnectionProcessor(ConnectionDB connectionDB) {
-        this.connectionDB = connectionDB;
-    }
-
-    public ConnectionDB getConnectionDB() {
-        return connectionDB;
-    }
-
-
     public List<Flight> connectionToCity(ConnectionRequest connectionRequest){
-
         List<Flight> toAirport;
+
         toAirport = connectionDB.getConnection().stream()
                 .filter(a -> a.arrivalCity.equals(connectionRequest.destinationCity))
                 .collect(Collectors.toList());
-        System.out.println("All possible flights to city: "+connectionRequest.destinationCity);
 
-        toAirport.stream()
-                .forEach(System.out::println);
-
+        if(toAirport.size()>0){
+            System.out.println("All possible flights to city: "+connectionRequest.destinationCity);
+            toAirport.stream()
+                    .forEach(System.out::println);
+        } else {
+            System.out.println("\n\nNo flights found for requested connection");
+        }
         return new ArrayList<>(toAirport);
     }
 
 
-
     public List<Flight> connectionFromCity(ConnectionRequest connectionRequest){
         List<Flight> fromAirport;
+
         fromAirport = connectionDB.getConnection().stream()
                 .filter(a -> a.departureCity.equals(connectionRequest.startCity))
                 .collect(Collectors.toList());
 
-        System.out.println("\n\nAll possible flights from city: "+connectionRequest.startCity);
-
-        fromAirport.stream()
-                .forEach(System.out::println);
-
+        if(fromAirport.size()>0) {
+            System.out.println("\n\nAll possible flights from city: " + connectionRequest.startCity);
+            fromAirport.stream()
+                    .forEach(System.out::println);
+        } else {
+            System.out.println("\n\nNo flights found for requested connection");
+        }
         return  new ArrayList<>(fromAirport);
     }
 
 
-
     public List<Flight> connectionToCityViaCity (ConnectionRequest connectionRequest){
-        List<Flight> toCityViaCity;
+        List<Flight> toViaCity;
+        List<Flight> fromViaCity;
 
-        toCityViaCity = connectionDB.getConnection().stream()
+        toViaCity = connectionDB.getConnection().stream()
                 .filter(a -> a.departureCity.equals(connectionRequest.startCity))
                 .filter(a -> a.arrivalCity.equals(connectionRequest.viaCity))
                 .collect(Collectors.toList());
 
-
-        toCityViaCity = connectionDB.getConnection().stream()
+        fromViaCity = connectionDB.getConnection().stream()
                 .filter(a -> a.departureCity.equals(connectionRequest.viaCity))
                 .filter(a -> a.arrivalCity.equals(connectionRequest.destinationCity))
                 .collect(Collectors.toList());
 
-        System.out.println("\n\nAll possible flights from city: "+connectionRequest.startCity+" to city: "+connectionRequest.destinationCity+" via city: "+connectionRequest.viaCity);
+        toViaCity.addAll(fromViaCity);
 
-        toCityViaCity.stream()
-                .forEach(System.out::println);
-
-        return new ArrayList<>(toCityViaCity);
+        if(toViaCity.size()>0 && fromViaCity.size()>0) {
+            System.out.println("\n\nAll possible flights from city: " + connectionRequest.startCity + " to city: " + connectionRequest.destinationCity + " via city: " + connectionRequest.viaCity);
+            toViaCity.stream()
+                    .forEach(System.out::println);
+        } else {
+            System.out.println("\n\nNo flights found for requested connection");
+        }
+        return new ArrayList<>(toViaCity);
         }
     }

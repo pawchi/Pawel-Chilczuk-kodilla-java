@@ -6,8 +6,6 @@ import java.util.List;
 
 public final class ConnectionDB {
 
-
-
     public static List<Flight> getConnection(){
 
         final List<Flight> allConnections = new ArrayList<>();

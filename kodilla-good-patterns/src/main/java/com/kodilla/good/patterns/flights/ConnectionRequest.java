@@ -16,24 +16,4 @@ public class ConnectionRequest {
         this.viaCity = viaCity;
         this.startDateTime = startDateTime;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getStartCity() {
-        return startCity;
-    }
-
-    public String getDestinationCity() {
-        return destinationCity;
-    }
-
-    public String getViaCity() {
-        return viaCity;
-    }
-
-    public LocalDateTime getStartDateTime() {
-        return startDateTime;
-    }
 }
