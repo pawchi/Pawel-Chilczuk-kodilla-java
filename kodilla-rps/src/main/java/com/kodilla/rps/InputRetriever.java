@@ -45,10 +45,27 @@ public class InputRetriever {
 
         for(int roundAmount=1;roundAmount<howManyRounds+1;roundAmount++) {
 
-            int playerMove;
+            int playerMove=0;
             System.out.println("Please make your move and press ENTER: ");
             Scanner readMove = new Scanner(System.in);
-            playerMove = (Integer.parseInt(readMove.nextLine()));
+            isNotCorrect = true;
+            do {
+                try {
+                    playerMove = (Integer.parseInt(readMove.nextLine()));
+                    isNotCorrect=false;
+                } catch (InputMismatchException e) {
+                    System.err.println("Wrong input data!!!");
+                    readInputData.nextLine();
+                    System.out.println("Please write a NUMBER from 1 to 3 and press ENTER");
+                }
+                catch (NumberFormatException ex) {
+                    System.err.println("Wrong input data!!");
+                    readInputData.nextLine();
+                    System.out.println("Please write a NUMBER from 1 to 3 and press ENTER");
+                }
+
+            } while (isNotCorrect);{
+            }
 
             Integer computerMove=null;
             Random rand = new Random();
@@ -56,30 +73,39 @@ public class InputRetriever {
 
             System.out.println("Computer move was: " + computerMove + ", Your move was: " + playerMove);
 
-            if (computerMove == 1 && playerMove == 1 || computerMove == 2 && playerMove == 2 || computerMove == 3 && playerMove == 3) {
-                System.out.println("In this round we have a draw. Let's repeat!");
-                roundAmount=roundAmount-1;
-            } else {
-                if (computerMove == 1 && playerMove == 2 || computerMove == 2 && playerMove == 3 || computerMove == 3 && playerMove == 1) {
-                    System.out.println("In round " + roundAmount + " computer wins.");
-                    computerScore = computerScore + 1;
-                }
-                if (computerMove == 2 && playerMove == 1 || computerMove == 3 && playerMove == 2 || computerMove == 1 && playerMove == 3) {
+            GameRules gameRules = new GameRules();
+            switch (gameRules.whoWins(computerMove,playerMove)){
+                case 0: //draw
+                    System.out.println("In this round we have a draw. Let's repeat!");
+                    roundAmount=roundAmount-1;
+                    break;
+
+                case -1: //wins player
                     System.out.println("In round " + roundAmount + " player " + userName + " wins.");
                     playerScore = playerScore + 1;
-                }
-                System.out.println("Currant game score after round " + roundAmount + " : Computer score-" + computerScore + "; " + userName + " score-" + playerScore);
+                    break;
+
+                case 2: //wins player
+                    System.out.println("In round " + roundAmount + " player " + userName + " wins.");
+                    playerScore = playerScore + 1;
+                    break;
+
+                default: //wins computer
+                    System.out.println("In round " + roundAmount + " computer wins.");
+                    computerScore = computerScore + 1;
             }
         }
-
 
         System.out.println("\n\nGAME FINISHED!");
         System.out.println("Computer won "+computerScore+" rounds;   "+userName+" won "+playerScore+" rounds. So...");
         System.out.println("\nTHE WINNER IS: ");
         if(computerScore>playerScore){
+            if(computerScore<playerScore){
+                System.out.println(userName+"!!!");
+            }
             System.out.println("COMPUTER!!!");
         }else {
-            System.out.println(userName+"!!!");
+            System.out.println("We have no WINNER. DRAW!!!");
         }
     }
 }
