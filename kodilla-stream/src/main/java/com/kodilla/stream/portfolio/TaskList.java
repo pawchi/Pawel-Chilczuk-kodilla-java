@@ -30,7 +30,7 @@ public final class TaskList {
     public String toString() {
         return "TaskList{" +
                 "name='" + name + '\'' + ",\n" +
-                "tasks=\n" + tasks + "\n" +
+                "task=\n" + tasks + "\n" +
                 '}' + "\n";
     }
 

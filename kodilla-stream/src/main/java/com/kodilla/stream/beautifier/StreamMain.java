@@ -1,5 +1,4 @@
 package com.kodilla.stream.beautifier;
-import com.kodilla.stream.lambda.*;
 
 import static jdk.nashorn.internal.objects.NativeString.toLowerCase;
 import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
@@ -13,9 +12,5 @@ public class StreamMain {
         poemBeutifier.beutify("Text to uppercase",(a) -> toUpperCase(a) );
         poemBeutifier.beutify("TexT to LOWERCASE",(a) -> toLowerCase(a) );
         poemBeutifier.beutify("  Text to trim   ",(a) -> trim(a) );
-
-
     }
-
-
 }

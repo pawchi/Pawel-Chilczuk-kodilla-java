@@ -13,7 +13,7 @@ public class BoardTestSuite {
         User user2 = new User("projectmanager1", "Nina White");
         User user3 = new User("developer2", "Emilia Stephanson");
         User user4 = new User("developer3", "Konrad Bridge");
-        //tasks
+        //task
         Task task1 = new Task("Microservice for taking temperature",
                 "Write and test the microservice taking\n" +
                         "the temperaure from external service",
