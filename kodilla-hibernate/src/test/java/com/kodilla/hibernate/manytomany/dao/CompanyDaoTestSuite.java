@@ -107,11 +107,12 @@ public class CompanyDaoTestSuite {
             Assert.assertEquals(1,companiesFirstThreeLettersSize);
             Assert.assertEquals(1,employeesWithLastnameSize);
 
+
             //CleanUp
             try {
                 companyDao.deleteAll();
             } catch (Exception e){
-                //do nothing
+                // do nothing
             }
         }
     }
