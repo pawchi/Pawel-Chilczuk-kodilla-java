@@ -4,7 +4,7 @@ package com.kodilla.hibernate.namedQuery;
 import com.kodilla.hibernate.nemedQuery.Company;
 import com.kodilla.hibernate.nemedQuery.Employee;
 import com.kodilla.hibernate.nemedQuery.dao.CompanyDao;
-import com.kodilla.hibernate.nemedQuery.dao.EmployeeDao;
+import com.kodilla.hibernate.nemedQuery.dao.EmployeeDao2;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ import java.util.List;
 @SpringBootTest
 public class CompanyDaoTestSuite {
     @Autowired
-    EmployeeDao employeeDao;
+    EmployeeDao2 employeeDao;
     @Autowired
     CompanyDao companyDao;
 
@@ -47,11 +47,12 @@ public class CompanyDaoTestSuite {
         lindaKovalsky.getCompanies().add(greyMatter);
 
         companyDao.save(softwareMachine);
-        //int softwareMachineId = softwareMachine.getId();
+        int softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);
-        //int dataMaestersId = dataMaesters.getId();
+        int dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
-        //int greyMatterId = greyMatter.getId();
+        int greyMatterId = greyMatter.getId();
+
 
         //When
 

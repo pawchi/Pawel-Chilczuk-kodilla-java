@@ -10,4 +10,6 @@ include 'kodilla-jdbc'
 include 'kodilla-sudoku'
 include 'kodilla-hibernate'
 include 'kodilla-hibernate'
+include 'tasks'
+include 'kodilla-tasks'
 
