@@ -1,6 +1,9 @@
 package com.kodilla.hibernate.task.dao;
 
+import com.kodilla.hibernate.task.Task;
 import com.kodilla.hibernate.task.TaskFinancialDetails;
+import com.kodilla.hibernate.tasklist.TaskList;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,21 +19,29 @@ public class TaskFinancialDetailsDaoTestSuite {
     @Autowired
     TaskFinancialDetailsDao taskFinancialDetailsDao;
 
+    @After
+    public void tearDown() throws Exception {
+        taskFinancialDetailsDao.deleteAll();
+    }
+
     @Test
     public void testFindByPaid() {
         //Given
         TaskFinancialDetails taskFinancialDetails =
                 new TaskFinancialDetails(new BigDecimal(115), false);
+
         taskFinancialDetailsDao.save(taskFinancialDetails);
         int id = taskFinancialDetails.getId();
 
         //When
         List<TaskFinancialDetails> resultList = taskFinancialDetailsDao.findByPaid(false);
+        //taskFinancialDetailsDao.deleteAll();
+
 
         //Then
-        Assert.assertEquals(1, resultList.size());
+       Assert.assertEquals(1, resultList.size());
 
         //CleanUp
-        taskFinancialDetailsDao.delete(id);
+
     }
 }

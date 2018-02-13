@@ -8,16 +8,19 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
     @Autowired
     EmployeeDao employeeDao;
+
 
     @Test
     public void testSaveManyToMany() {
@@ -65,55 +68,59 @@ public class CompanyDaoTestSuite {
             //}
         }
 
-        @Test
+    @Test
     public void testNamedQuery(){
-            //Given
-            Employee johnSmith = new Employee("John", "Smith");
-            Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-            Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
 
-            Company softwareMachine = new Company("Software Machine");
-            Company dataMaesters = new Company("Data Maesters");
-            Company greyMatter = new Company("Grey Matter");
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company greyMatter = new Company("Grey Matter");
 
-            softwareMachine.getEmployees().add(johnSmith);
-            dataMaesters.getEmployees().add(stephanieClarckson);
-            dataMaesters.getEmployees().add(lindaKovalsky);
-            greyMatter.getEmployees().add(johnSmith);
-            greyMatter.getEmployees().add(lindaKovalsky);
+        softwareMachine.getEmployees().add(johnSmith);
+        dataMaesters.getEmployees().add(stephanieClarckson);
+        dataMaesters.getEmployees().add(lindaKovalsky);
+        greyMatter.getEmployees().add(johnSmith);
+        greyMatter.getEmployees().add(lindaKovalsky);
 
-            johnSmith.getCompanies().add(softwareMachine);
-            johnSmith.getCompanies().add(greyMatter);
-            stephanieClarckson.getCompanies().add(dataMaesters);
-            lindaKovalsky.getCompanies().add(dataMaesters);
-            lindaKovalsky.getCompanies().add(greyMatter);
+        johnSmith.getCompanies().add(softwareMachine);
+        johnSmith.getCompanies().add(greyMatter);
+        stephanieClarckson.getCompanies().add(dataMaesters);
+        lindaKovalsky.getCompanies().add(dataMaesters);
+        lindaKovalsky.getCompanies().add(greyMatter);
 
-            companyDao.save(softwareMachine);
-            //int softwareMachineId = softwareMachine.getId();
-            companyDao.save(dataMaesters);
-            //int dataMaestersId = dataMaesters.getId();
-            companyDao.save(greyMatter);
-            //int greyMatterId = greyMatter.getId();
-
-            //When
-
-            List<Company> compeniesFirstThreeLetters = companyDao.retrieveCompanyName("Dat");
-            List<Employee> employeesWithLastname = employeeDao.retrieveEmployeesLastname("Kovalsky");
-
-            //Than
-            int companiesFirstThreeLettersSize = compeniesFirstThreeLetters.size();
-            int employeesWithLastnameSize = employeesWithLastname.size();
-
-            Assert.assertEquals(1,companiesFirstThreeLettersSize);
-            Assert.assertEquals(1,employeesWithLastnameSize);
+        companyDao.save(softwareMachine);
+        int softwareMachineId = softwareMachine.getId();
+        companyDao.save(dataMaesters);
+        int dataMaestersId = dataMaesters.getId();
+        companyDao.save(greyMatter);
+        int greyMatterId = greyMatter.getId();
 
 
-            //CleanUp
-            try {
-                companyDao.deleteAll();
-            } catch (Exception e){
-                // do nothing
-            }
+        //When
+
+        List<Company> compeniesFirstThreeLetters = companyDao.retrieveCompanyName("Dat");
+        List<Employee> employeesWithLastname = employeeDao.retrieveEmployeesLastname("Kovalsky");
+
+        //Than
+        int companiesFirstThreeLettersSize = compeniesFirstThreeLetters.size();
+        int employeesWithLastnameSize = employeesWithLastname.size();
+
+        Assert.assertEquals(1,companiesFirstThreeLettersSize);
+        Assert.assertEquals(1,employeesWithLastnameSize);
+
+
+        //CleanUp
+        try {
+            companyDao.deleteAll();
+            employeeDao.deleteAll();
+        } catch (Exception e){
+            // do nothing
         }
+    }
+
+
     }
 

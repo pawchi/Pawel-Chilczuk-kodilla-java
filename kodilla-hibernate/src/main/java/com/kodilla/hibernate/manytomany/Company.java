@@ -4,9 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+
 @NamedQuery(
         name = "Company.retrieveCompanyName",
-        query = "FROM Company WHERE SUBSTRING(company_name, 1, 3) = : FIRSTTHREELETTERS "
+        query = "FROM Company WHERE SUBSTRING(company_name, 1, 3) = :FIRSTTHREELETTERS"
+
 )
 
 @Entity
